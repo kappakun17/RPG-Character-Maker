@@ -1,0 +1,25 @@
+
+
+.game-maker{
+    font-family: National2CompressedWeb,"Helvetica Condensed","Arial Narrow",sans-serif;
+    letter-spacing: .05rem;
+    background: #326826;
+    height: 100vh;
+}
+
+.game-maker p {
+    margin: 0;
+    color: white;
+}
+
+.game-player{
+    background-color: #313031;
+}
+
+.img-fit {
+    object-fit: contain;
+}
+
+.border5{
+    border-width:10px;
+}
