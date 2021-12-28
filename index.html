@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+
+        <!-- Vue.js CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div id="app" class='game-maker col d-flex justify-content-center align-items-center'>
+            <div class="container col col-md-10 p-3 d-flex flex-column justify-content-center align-items-center">
+                {{makeCharacterObject}}
+            
+                <div class="col d-flex justify-content-start p-2">
+                    <p class="h3 text-left">Display Area</p>
+                </div>
+                <div class="col game-player rounded d-flex flex-wrap p-3 mt-2 border5 shadow">
+                    <div class="col-12 col-md-3 border border-light d-flex justify-content-center align-items-center p-3">
+                        <img v-bind:src="character.charDesign" class="img-fit col-10">
+                    </div>
+                    <div class="col-12 col-md-9 h5">
+                        <div class="col-12 border border-light d-flex flex-column p-3">
+                            <p>Name: {{ name }}</p>
+                            <p>Class: {{ gender }}</p>
+                            <p>Gender: {{ job }}</p>
+                            <p>Traits: {{ traits }}</p>
+                        </div>
+                        
+
+                        <div class="col-12 border border-light d-flex flex-column p-3 mt-3">
+                            <p>Strength: {{ character.status === undefined ? "" : character.status.strength }}</p>
+                            <p>Agility: {{ character.status === undefined ? "" : character.status.agility }}</p>
+                            <p>Resilience: {{ character.status === undefined ? "" : character.status.resilience }}</p>
+                            <p>Wisdom: {{ character.status === undefined ? "" : character.status.wisdom }}</p>
+                            <p>Luck: {{ character.status === undefined ? "" : character.status.luck}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col d-flex flex-column justify-content-start p-2 text-white">
+                    <p class="h3 text-left">Input Area</p>
+                    <div class="mt-3 h5 d-flex flex-wrap">
+                        <div class="col-1">
+                            <label>Name: </label>
+                        </div>
+                        <div class="col-3">
+                            <input v-model="name" placeholder="unknown" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mt-3 h5 d-flex flex-wrap">
+                        <div class="col-1">
+                            <label>Gender: </label>
+                        </div>
+                        <div class="col-3">
+                            <input type="radio" id="male" value="Male" v-model="gender">
+                            <label for="male">Male</label>
+                            <br>
+                            <input type="radio" id="female" value="Female" v-model="gender">
+                            <label for="female">Female</label>
+                        </div>
+                    </div>
+                    <div class="mt-3 h5 d-flex flex-wrap">
+                        <div class="col-1">
+                            <label>Job: </label>
+                        </div>
+                        <div class="col-3">
+                            <select class="form-control" v-model="job">
+                                <option disabled value="">Please Select your job</option>
+                                <option>Hero</option>
+                                <option>Warrior</option>
+                                <option>Mage</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-3 h5 d-flex flex-wrap">
+                        <div class="col-1">
+                            <label>Traits: </label>
+                        </div>
+                        <div class="col-3">
+                            <select class="form-control" v-model="traits">
+                                <option disabled value="">Please Select your traits</option>
+                                <option>Everyman</option>
+                                <option>Bat Out Of Hell</option>
+                                <option v-if="isHero">Brave</option>
+                                <option v-if="isMale">Lucky Devil</option>
+                                <option v-if="isFemale">Tomboy</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+            
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="./js/main.js"></script>
+</html>
